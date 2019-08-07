@@ -1,0 +1,79 @@
+@baseUrl = http://localhost:8200/api/v1
+
+### curl --request POST --url http://localhost:8080/api/v1/auth --header 'content-type: application/json' --data '{"username": "asher","password": "rehsa2019"}'
+# @name createUser
+POST {{baseUrl}}/user HTTP/1.1
+content-type: application/json
+
+{
+    "username": "asher",
+    "password": "rehsa2019",
+    "email": "quique.pons94@gmail.com"
+}
+
+### curl --request POST --url http://localhost:8080/api/v1/auth --header 'content-type: application/json' --data '{"username": "asher","password": "rehsa2019"}'
+# @name login
+POST {{baseUrl}}/auth HTTP/1.1
+content-type: application/json
+
+{
+    "username": "asher",
+    "password": "rehsa2019"
+}
+
+###
+@authToken = Bearer {{login.response.body.*}}
+
+### curl --request GET --url http://localhost:8080/api/v1/twitter --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# @name getTweets
+GET {{baseUrl}}/payment/setup_intents
+Authorization: {{authToken}}
+
+# ### curl --request GET --url http://localhost:8080/api/v1/twitter/process/gettweets --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name getTweetsFromTwitter
+# GET {{baseUrl}}/twitter/process/gettweets
+# Authorization: {{authToken}}
+
+# ### curl --request GET --url http://localhost:8080/api/v1/twitter/twitter/conversation --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name getConversations
+# GET {{baseUrl}}/twitter/conversation
+# Authorization: {{authToken}}
+
+
+# ### curl --request GET --url http://localhost:8080/api/v1/twitter/twitter/conversation/1110346059505639400 --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name getConversation
+# GET {{baseUrl}}/twitter/conversation/1110346059505639400
+# Authorization: {{authToken}}
+
+# ### curl --request GET --url http://localhost:8080/api/v1/twitter/twitter/conversation/1110346059505639400/valoration --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name updateValoration
+# POST {{baseUrl}}/twitter/conversation/1110346059505639400/valoration HTTP/1.1
+# Authorization: {{authToken}}
+# content-type: application/json
+
+# {
+#     "option": "host",
+#     "label": []
+# }
+
+# ### curl --request GET --url http://localhost:8080/api/v1/user --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name getUsers
+# GET {{baseUrl}}/user
+# Authorization: {{authToken}}
+
+# ### curl --request GET --url http://localhost:8080/api/v1/user/5c925bd43ec8700038bb2a0f --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzMxNDYyMTE3OSwiZXhwIjoxNTU3ODc4NDAwMDAwfQ.IGHerNsyvSZEqkyjBWM7aZnKbwXuQ1IA6TuHe9ZoVt4"'
+# # @name getUser
+# GET {{baseUrl}}/user/5c925bd43ec8700038bb2a0f
+# Authorization: {{authToken}}
+
+# ###
+# ### curl --request GET --url http://localhost:8080/api/v1/opinion/process --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzQ3MjAwNjcxMywiZXhwIjoxNTU4MDUxMjAwMDAwfQ.SNd9j-obfsg5cVvy5bkiFV-3SEh3NTmXu36So2Q4HZA"'
+# # @name processOpinions
+# GET {{baseUrl}}/opinion/process
+# Authorization: {{authToken}}
+
+# ###
+# ### curl --request GET --url http://localhost:8080/api/v1/opinion/process --header 'authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc2hlci5zY2lsaW5nLmNvbSIsInN1YiI6IjVjOTI1YmYyM2VjODcwMDAzOGJiMmExMCIsImlhdCI6MTU1NzQ3MjAwNjcxMywiZXhwIjoxNTU4MDUxMjAwMDAwfQ.SNd9j-obfsg5cVvy5bkiFV-3SEh3NTmXu36So2Q4HZA"'
+# # @name processOpinions
+# GET {{baseUrl}}/twitter/test
+# Authorization: {{authToken}}
